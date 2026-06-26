@@ -14,7 +14,21 @@ h2 { margin-bottom: 5px; }
 .type-wall { display: flex; align-items: center; margin-top: 50px !important; margin-left: 20px !important; }
 .type-wall .wall-bracket { display: block; width: 100px; height: 35px; margin-right: -15px; z-index: -1; border-radius: 10px 0 0 10px; background-color: #495057; }
 
-.fan-container { width: 200px; height: 200px; border: 12px solid #495057; border-radius: 50%; position: relative; display: flex; justify-content: center; align-items: center; background-color: rgba(248, 249, 250, 0.6); box-shadow: inset 0 0 20px rgba(0,0,0,0.3); z-index: 2; transform-style: preserve-3d; }
+.fan-container { 
+    width: 200px; 
+    height: 200px; 
+    border: 12px solid #495057; 
+    border-radius: 50%; 
+    position: relative; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    background-color: rgba(248, 249, 250, 0.6); 
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.3); 
+    z-index: 2; 
+    transform-style: preserve-3d; 
+    position: relative; /* Pastikan tumpukan berfungsi */
+}
 
 .motor { position: absolute; width: 70px; height: 90px; background-color: #343a40; border-radius: 40px; transform: translateZ(-50px); }
 .blades-wrapper { width: 100%; height: 100%; position: relative; transform: translateZ(10px); }
@@ -23,6 +37,49 @@ h2 { margin-bottom: 5px; }
 .blade:nth-child(1) { transform: rotate(0deg); }
 .blade:nth-child(2) { transform: rotate(120deg); }
 .blade:nth-child(3) { transform: rotate(240deg); }
+
+/* --- PERBAIKAN: Menambahkan Desain Jaring Pelindung --- */
+.fan-guard {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    /* Tumpuk di atas baling (10px), di bawah center-dot (20px) */
+    transform: translateZ(15px);
+    /* Gunakan pseudo-elemen untuk pola jaring silang */
+    pointer-events: none; /* Agar klik dapat melewati jaring */
+    opacity: 0.6; /* Membuatnya sedikit transparan */
+}
+
+/* Garis jaring horizontal */
+.fan-guard::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    /* Representasi visual jaring menggunakan linear-gradient silang */
+    background-image: 
+        linear-gradient(90deg, transparent 48%, rgba(200, 200, 200, 0.4) 48%, rgba(200, 200, 200, 0.4) 52%, transparent 52%),
+        linear-gradient(180deg, transparent 48%, rgba(200, 200, 200, 0.4) 48%, rgba(200, 200, 200, 0.4) 52%, transparent 52%);
+    background-size: 15px 15px; /* Jarak antara jaring */
+}
+
+/* Menambahkan sedikit detail cincin pelindung tambahan */
+.fan-guard::after {
+    content: '';
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 80%;
+    height: 80%;
+    border-radius: 50%;
+    border: 3px solid rgba(200, 200, 200, 0.3);
+}
 
 .center-dot { width: 35px; height: 35px; background-color: #212529; border-radius: 50%; position: absolute; transform: translateZ(20px); }
 
@@ -38,11 +95,11 @@ h2 { margin-bottom: 5px; }
 }
 .speed-1 { animation: spin 1.0s linear infinite; }
 .speed-2 { animation: spin 0.8s linear infinite; }
-.speed-3 { animation: spin 0.6s linear infinite; }
-.speed-4 { animation: spin 0.4s linear infinite; }
-.speed-5 { animation: spin 0.2s linear infinite; }
-.speed-6 { animation: spin 0.1s linear infinite; }
-.speed-7 { animation: spin 0.04s linear infinite; }
+.speed-3 { animation: spin 1.1s linear infinite; }
+.speed-4 { animation: spin 1.4s linear infinite; }
+.speed-5 { animation: spin 1.7s linear infinite; }
+.speed-6 { animation: spin 2.0s linear infinite; }
+.speed-7 { animation: spin 2.5s linear infinite; }
 
 .control-panel { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); max-width: 500px; margin: 0 auto; }
 .controls { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; }
