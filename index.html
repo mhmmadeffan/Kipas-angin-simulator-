@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kipas Angin Simulator</title>
+    
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <h2>Kipas Angin 3D (Diperbaiki)</h2>
+    
+    <div id="fan-system" class="type-stand">
+        <div class="ceiling-rod"></div>
+        <div class="wall-bracket"></div>
+        <div id="fan-head" class="fan-container">
+            <div class="motor"></div>
+            <div id="fan-blades" class="blades-wrapper">
+                <div class="blade"></div>
+                <div class="blade"></div>
+                <div class="blade"></div>
+            </div>
+            <div class="center-dot"></div>
+        </div>
+        <div class="stand-pole"></div>
+        <div class="stand-base"></div>
+    </div>
+    
+    <div class="control-panel">
+        <h3>Mode & Jenis:</h3>
+        <div class="controls">
+            <button class="type-btn" onclick="changeType('type-stand')">Kipas Duduk</button>
+            <button class="type-btn" onclick="changeType('type-ceiling')">Kipas Atap</button>
+            <button class="type-btn" onclick="changeType('type-wall')">Kipas Dinding</button>
+            <button id="btn-swing" class="swing-btn" onclick="toggleSwing()">Geleng: OFF</button>
+        </div>
+        <hr style="border-top: 1px solid #ddd;">
+        <h3>Kecepatan:</h3>
+        <div class="controls">
+            <button class="off" onclick="changeSpeed('off', 0)">Mati</button>
+            <button class="on" onclick="changeSpeed('speed-1', 1)">1</button>
+            <button class="on" onclick="changeSpeed('speed-2', 2)">2</button>
+            <button class="on" onclick="changeSpeed('speed-3', 3)">3</button>
+            <button class="on" onclick="changeSpeed('speed-4', 4)">4</button>
+            <button class="on" onclick="changeSpeed('speed-5', 5)">5</button>
+            <button class="on" onclick="changeSpeed('speed-6', 6)">6</button>
+            <button class="on" onclick="changeSpeed('speed-7', 7)">7</button>
+        </div>
+    </div>
+
+    <audio id="audio-tombol" src="data:audio/mp4;base64,..." preload="auto"></audio>
+    <audio id="audio-kipas" src="data:audio/mp4;base64,..." preload="auto"></audio>
+
+    <script src="/js/script.js"></script>
+</body>
+</html>
